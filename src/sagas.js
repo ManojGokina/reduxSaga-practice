@@ -2,7 +2,8 @@ import {call , put,takeEvery} from "redux-saga/effects";
 import {GET_DATA_SUCCESS, GET_FAKE_DATA} from "./action";
 
 function* storeFetch(){
-    yield fetch('https://fakestoreapi.com/products').then(response => response.json());
+   const fetchedData = yield fetch('https://fakestoreapi.com/products').then(response => response.json());
+   return fetchedData
 }
 
 function* getDataFetch(){
@@ -14,4 +15,4 @@ function* mySaga(){
     yield takeEvery(GET_FAKE_DATA , getDataFetch);
 }
 
-export default mySaga;
+export default mySaga; 
